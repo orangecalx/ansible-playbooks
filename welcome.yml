@@ -1,7 +1,7 @@
 ---
 
 - name: welcome wagon for new VMs
-  hosts: ahab
+  hosts: all
   become: true
   remote_user: brandon
   
