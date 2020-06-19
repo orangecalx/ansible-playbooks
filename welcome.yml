@@ -26,7 +26,7 @@
         state: present
         update_cache: true
       
-    - name: Copy selektor menu shell script
+    - name: copy selektor menu shell script
       copy:
         src: ~/playbooks/selektor.sh
         dest: /home/brandon/scripts/
@@ -35,13 +35,24 @@
         mode: 0420
 
 
-    - name: Copy copland.txt ascii art
+    - name: copy copland.txt ascii art
       copy:
         src: ~/playbooks/copland.txt
         dest: /home/brandon/scripts/
         owner: brandon
         group: brandon
         mode: 0420
+
+
+    - name: add update / upgrade cron jobs
+      cron:
+        name: update / upgrade
+        user: "brandon"
+        minute: 00
+        hour: 00
+        job: "sudo apt update ; sudo apt upgrade -y"
+      become: yes
+
 
 
 
