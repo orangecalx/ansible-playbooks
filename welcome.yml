@@ -13,45 +13,23 @@
       upgrade: full
       update_cache: yes
 
-
-  - name: add bran group
-        group:
-          name: bran
-          state: present
-
-  - name: edit sudoers for bran passwdless sudo
-        lineinfile:
-          dest: /etc/sudoers
-          state: present
-          regexp: '^%bran'
-          line: '%bran ALL=(ALL) NOPASSWD: ALL'
-          validate: visudo -cf %s
-
-  - name: add sudoers users to bran
-        user: 
-          name: '{{ item }}'
-          groups: bran
-          append: yes
-        with_items: "{{ sudoers }}"
-     
-      
   - name: Copy selektor menu shell script
-      copy:
-        src: ~/playbooks/selektor.sh
-        dest: /home/brandon/scripts/
-        owner: brandon
-        group: brandon
-        mode: 0420
+    copy:
+      src: ~/playbooks/selektor.sh
+      dest: /home/brandon/scripts/
+      owner: brandon
+      group: brandon
+      mode: 0420
 
 
 
   - name: Copy copland.txt ascii art
-      copy:
-        src: ~/playbooks/copland.txt
-        dest: /home/brandon/scripts/
-        owner: brandon
-        group: brandon
-        mode: 0420
+    copy:
+      src: ~/playbooks/copland.txt
+      dest: /home/brandon/scripts/
+      owner: brandon
+      group: brandon
+      mode: 0420
 
 
 
