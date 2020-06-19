@@ -1,0 +1,28 @@
+---
+
+- name: Export menu script to network
+  become: true
+  hosts: all
+  remote_user: brandon
+
+  tasks:
+
+    - name: Copy selektor menu shell script
+      copy:
+        src: ~/playbooks/selektor.sh
+        dest: /home/brandon/scripts/
+        owner: brandon
+        group: brandon
+        mode: 0420
+
+
+    - name: Copy copland.txt ascii art
+      copy:
+        src: ~/playbooks/copland.txt
+        dest: /home/brandon/scripts/
+        owner: brandon
+        group: brandon
+        mode: 0420
+
+    
+
