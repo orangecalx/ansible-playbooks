@@ -79,6 +79,15 @@
       become: true
 
 
-     
+    - name: add nightly upgrade / update cron job
+      cron: 
+        name: "### nightly updates"
+        minute: 0
+        hour: 0
+        job: sudo apt update ; sudo apt-upgrade -y
+        state: present
+      become: true
+
+      
 
      
