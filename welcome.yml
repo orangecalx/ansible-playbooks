@@ -7,63 +7,42 @@
 
   tasks:
 
-  - name: run initial apt update / upgrade
-    become: true
-    apt:
-      upgrade: full
-      update_cache: yes
-
-  - name: Copy selektor menu shell script
-    copy:
-      src: ~/playbooks/selektor.sh
-      dest: /home/brandon/scripts/
-      owner: brandon
-      group: brandon
-      mode: 0420
-
-
-
-  - name: Copy copland.txt ascii art
-    copy:
-      src: ~/playbooks/copland.txt
-      dest: /home/brandon/scripts/
-      owner: brandon
-      group: brandon
-      mode: 0420
-
-
-
-    - name: add lynis repo
-      apt_repository:
-        repo: 'https://packages.cisofy.com/'
-        filename: lynis
-        update_cache: yes
-
-
+    - name: run initial apt update / upgrade
+      become: true
+      apt:
+        upgrade: full
+        update_cache: true
 
     - name: install apps
-      apt: 
+      apt:
         name: 
-          - git
-          - neofetch
           - nmap
-          - htop
+          - neofetch
           - python3
           - pip3 
-          - lynis
+          - htop
+          - git
         state: present
         update_cache: true
-      become: true
+      
+    - name: Copy selektor menu shell script
+      copy:
+        src: ~/playbooks/selektor.sh
+        dest: /home/brandon/scripts/
+        owner: brandon
+        group: brandon
+        mode: 0420
 
 
-    - name: add nightly upgrade / update cron job
-      cron: 
-        name: "### nightly updates"
-        minute: 0
-        hour: 0
-        job: sudo apt update ; sudo apt-upgrade -y
-        state: present
-      become: true
+    - name: Copy copland.txt ascii art
+      copy:
+        src: ~/playbooks/copland.txt
+        dest: /home/brandon/scripts/
+        owner: brandon
+        group: brandon
+        mode: 0420
+
+
 
       
 
