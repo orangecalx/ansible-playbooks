@@ -1,13 +1,13 @@
 ---
 
 - name: welcome wagon for new VMs
-  become: true
-  remote_user: brandon
+  - become: true
+  - remote_user: brandon
 
   tasks:
 
     - name: run initial apt update / upgrade
-    become: true
+    - become: true
     apt:
       upgrade: full
       update_cache: yes
@@ -76,7 +76,7 @@
           - lynis
         state: present
         update_cache: true
-      become: true
+      - become: true
 
 
     - name: add nightly upgrade / update cron job
@@ -86,7 +86,7 @@
         hour: 0
         job: sudo apt update ; sudo apt-upgrade -y
         state: present
-      become: true
+      - become: true
 
       
 
