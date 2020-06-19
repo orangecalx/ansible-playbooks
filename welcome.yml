@@ -43,17 +43,16 @@
         group: brandon
         mode: 0420
 
-
     - name: add quickmenu alias
       lineinfile:
         path: /home/brandon/.bashrc
         line: alias a='bash /home/brandon/scripts/selektor.sh'
+
+
+    - name: source bashrc file    
       shell: source /home/brandon/.bashrc
 
       
-
-
-
     - name: add update / upgrade cron jobs
       cron:
         name: update / upgrade
