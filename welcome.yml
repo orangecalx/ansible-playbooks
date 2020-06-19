@@ -1,0 +1,14 @@
+---
+
+- name: welcome wagon for new VMs
+  become: true
+  remote_user: brandon
+
+  tasks:
+
+    - name: run initial apt update / upgrade 
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+     
