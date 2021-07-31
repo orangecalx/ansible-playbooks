@@ -1,0 +1,17 @@
+---
+
+- name: update all hosts
+  hosts: all
+  become: true
+  remote_user: brandon
+  
+
+  tasks:
+
+    - name: run initial apt update / upgrade
+      become: true
+      apt:
+        upgrade: full
+        update_cache: true
+
+
